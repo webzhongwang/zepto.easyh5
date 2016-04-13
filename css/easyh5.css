@@ -20,8 +20,8 @@
 	z-index: 3;
 }
 .easyh5-anim{
-	-webkit-transition:transform 1.3s;
-	transition:transform 1.3s;
+	-webkit-transition:transform .3s;
+	transition:transform .3s;
 }
 .easyh5-move{
 	-webkit-transform:translate3d(0,0,0);

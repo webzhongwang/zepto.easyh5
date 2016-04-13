@@ -63,6 +63,7 @@
                 _this.startX = e.targetTouches[0].clientX;
                 _this.startY = e.targetTouches[0].clientY;
                 _this.resetStyle();
+                _this.resetClass();
             });
             $node.on('touchend', function(e) {
                 
@@ -120,26 +121,30 @@
             $($node.find(this.settings.page)).css({
                 '-webkit-transition':'',
                 'transition':''
-            })
+            });
+        },
+        resetClass: function(){
+            var _this = this,
+                $node = _this.$node;
+            $($node.find('.easyh5-active')).removeClass('easyh5-active');
+            $($node.find('.easyh5-anim')).removeClass('easyh5-anim');
+
         },
         moveTo: function(target) {
 
             var _this = this,
                 $node = _this.$node;
-
-            console.log(target);
-            console.log(_this.settings.currentIndex)
+           
             //当未达到临界值时
             if (target == _this.settings.currentIndex) {
+                
                 $($node.find('.easyh5-active'))
-                    .addClass('.easyh5-anim')
-                    .removeClass('easyh5-active')
-                    
-                    // .css({
-                    //     '-webkit-transform' : '',
-                    //     'transform' : ''
-                    // });
-            } else {
+                    .addClass('easyh5-anim')
+                    .css({
+                        '-webkit-transform' : '',
+                        'transform' : ''
+                    });
+            } else {  
 
                 //判断target是否越界
                 if (target < 0) target = _this.settings.size - 1;
