@@ -1,3 +1,7 @@
+*{
+	padding:0;
+	margin:0;
+}
 .s1{
 	background-color: #f0f0f0;
 }
@@ -9,17 +13,4 @@
 }
 .s4{
 	background-color: #ddd;
-}
-#fullpage{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left:0;
-	top:0;
-}
-.section{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	transition:transform 2s;
 }
