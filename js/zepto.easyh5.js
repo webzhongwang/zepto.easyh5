@@ -123,36 +123,52 @@
             })
         },
         moveTo: function(target) {
+
             var _this = this,
                 $node = _this.$node;
 
-            //判断target是否越界
-            if (target < 0) target = _this.settings.size - 1;
-            if (target >= _this.settings.size) target = 0;
-            
-            _this.settings.currentIndex = target;
-            _this.resetPlacement();
-            
-            //添加动画
-            var $targetNode = $($node.find(this.settings.page)[target]);
-            $targetNode.css({
-                '-webkit-transition':'transform '+_this.options.duration/1000+'s',
-                'transition':'transform '+_this.options.duration/1000+'s'
-            })
-            $targetNode.addClass('easyh5-active');
-            
-            //动画结束之后的操作
-            //$targetNode.addClass('easyh5-move');
-            $targetNode.css({
-                '-webkit-transform' : 'translate3d( 0px, 0px,0px);',
-                'transform' : 'translate3d( 0px, 0px, 0px);'
-            });
+            console.log(target);
+            console.log(_this.settings.currentIndex)
+            //当未达到临界值时
+            if (target == _this.settings.currentIndex) {
+                $($node.find('.easyh5-active'))
+                    .addClass('.easyh5-anim')
+                    .removeClass('easyh5-active')
+                    
+                    // .css({
+                    //     '-webkit-transform' : '',
+                    //     'transform' : ''
+                    // });
+            } else {
 
-            setTimeout(function(){
-                $($node.find('.easyh5-current')).removeClass('easyh5-current');
-                $targetNode.addClass('easyh5-current');
-                $targetNode.removeClass('easyh5-active');
-            },_this.options.duration);
+                //判断target是否越界
+                if (target < 0) target = _this.settings.size - 1;
+                if (target >= _this.settings.size) target = 0;
+                
+                _this.settings.currentIndex = target;
+                
+                
+                //添加动画时长
+                var $targetNode = $($node.find(this.settings.page)[target]);
+                $targetNode.css({
+                    '-webkit-transition':'transform '+_this.options.duration/1000+'s',
+                    'transition':'transform '+_this.options.duration/1000+'s'
+                })
+                $targetNode.addClass('easyh5-active');
+                
+                //动画结束之后的操作
+                $targetNode.css({
+                    '-webkit-transform' : 'translate3d( 0px, 0px,0px);',
+                    'transform' : 'translate3d( 0px, 0px, 0px);'
+                });
+
+                setTimeout(function(){
+                    $($node.find('.easyh5-current')).removeClass('easyh5-current');
+                    $targetNode.addClass('easyh5-current');
+                    $targetNode.removeClass('easyh5-active');
+                    _this.resetPlacement();
+                },_this.options.duration);
+            }
         },
     };
 
