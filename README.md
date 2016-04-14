@@ -1,5 +1,7 @@
 # zepto.easyh5
 
+[![issues](https://img.shields.io/github/issues/yanhaijing/zepto.fullpage.svg)](https://github.com/yanhaijing/zepto.fullpage/issues) [![forks](https://img.shields.io/github/forks/yanhaijing/zepto.fullpage.svg)](https://github.com/yanhaijing/zepto.fullpage/network) [![stars](https://img.shields.io/github/stars/yanhaijing/zepto.fullpage.svg)](https://github.com/yanhaijing/zepto.fullpage/stargazers)
+
 快速构建html5移动应用
 
 ## 功能介绍
