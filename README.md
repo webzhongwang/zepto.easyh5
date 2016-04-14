@@ -1,6 +1,6 @@
 # zepto.easyh5
 
-[![issues](https://img.shields.io/github/issues/yanhaijing/zepto.fullpage.svg)](https://github.com/yanhaijing/zepto.fullpage/issues) [![forks](https://img.shields.io/github/forks/yanhaijing/zepto.fullpage.svg)](https://github.com/yanhaijing/zepto.fullpage/network) [![stars](https://img.shields.io/github/stars/yanhaijing/zepto.fullpage.svg)](https://github.com/yanhaijing/zepto.fullpage/stargazers)
+[![issues](https://img.shields.io/github/issues/webzhongwang/zepto.easyh5.svg)](https://github.com/webzhongwang/zepto.easyh5/issues) [![forks](https://img.shields.io/github/forks/webzhongwang/zepto.easyh5.svg)](https://github.com/webzhongwang/zepto.easyh5/network) [![stars](https://img.shields.io/github/stars/webzhongwang/zepto.easyh5.svg)](https://github.com/webzhongwang/zepto.easyh5/stargazers)
 
 快速构建html5移动应用
 
