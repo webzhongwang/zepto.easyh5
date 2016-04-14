@@ -7,7 +7,7 @@
 
 ## 快速上手
 ### 全屏滚动
-#### HTML
+##### HTML
 
 	<div id="easyh5" class="easyh5">
 		<section class="easyh5-page">Page 1</section>
@@ -16,7 +16,7 @@
 		<section class="easyh5-page">Page 4</section>
 	</div>
 
-### JS
+#### JS
 	
 	$('#easyh5').easyh5();
 
