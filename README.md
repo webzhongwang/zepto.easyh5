@@ -24,7 +24,7 @@
 	
 	$('#easyh5').easyh5();
 
-参数
+#### 参数
 
 	var defaults = {
         start: 0,       // 初始化时显示第几屏 默认从0开始
