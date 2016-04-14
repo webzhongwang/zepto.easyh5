@@ -31,8 +31,8 @@
 
         var ds = s > 0 ? s - $node.height() : s + $node.height();
         $moveNode.css({
-            '-webkit-transform' : 'translate3d( 0px, ' + ds + 'px,0px);',
-            'transform' : 'translate3d( 0px, ' + ds + 'px, 0px);'
+            '-webkit-transform' : 'translateY(' + ds + 'px);',
+            'transform' : 'translateY(' + ds + 'px);'
         });
         anim($moveNode);
     }
@@ -43,7 +43,7 @@
         $.each($eles, function (key,node){
             var $this = $(node),
                 delay = parseFloat($this.attr('delay')) ? parseFloat($this.attr('delay')) : 0;
-            delay += 0.2;   //延迟0.2s
+            delay = (delay*1000 + 200)/1000;   //延迟0.2s
             $this.addClass($this.attr('data-class'));
             $this.css({
                 '-webkit-animation-delay': delay + 's',
@@ -221,6 +221,7 @@
 
                 className = className.replace(dataClass,'');
                 node.className = className;
+
             })
             $eles.css({
                 '-webkit-animation': '',
@@ -232,7 +233,7 @@
             var _this = this,
                 $node = _this.$node;
            
-            //当未达到临界值时
+            //当未达到临界值 不翻屏时时
             if (target == _this.settings.currentIndex) {
                 
                 $($node.find('.easyh5-active'))
@@ -241,6 +242,9 @@
                         '-webkit-transform' : '',
                         'transform' : ''
                     });
+                setTimeout(function(){
+                    _this.resetPlacement();
+                },_this.options.duration);
             } else {  
 
                 //判断target是否越界
@@ -252,18 +256,15 @@
                 
                 //添加动画时长
                 var $targetNode = $($node.find(this.settings.page)[target]);
-                $targetNode.css({
-                    '-webkit-transition':'transform '+_this.options.duration/1000+'s ease-in-out',
-                    'transition':'transform '+_this.options.duration/1000+'s ease-in-out'
-                })
                 $targetNode.addClass('easyh5-active');
+                $targetNode.css({
+                    '-webkit-transition':'-webkit-transform '+_this.options.duration/1000+'s ease-in-out',
+                    'transition':'transform '+_this.options.duration/1000+'s ease-in-out',
+                    '-webkit-transform' : 'translateY(0);',
+                    'transform' : 'translateY(0);'
+                })
                 
                 //动画结束之后的操作
-                $targetNode.css({
-                    '-webkit-transform' : 'translate3d( 0px, 0px,0px);',
-                    'transform' : 'translate3d( 0px, 0px, 0px);'
-                });
-
                 setTimeout(function(){
                     $($node.find('.easyh5-current')).removeClass('easyh5-current');
                     $targetNode.addClass('easyh5-current');

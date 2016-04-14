@@ -27,19 +27,20 @@ html,body{
 	z-index: 3;
 }
 .easyh5-anim{
-	-webkit-transition:transform .3s ease-in;
-	transition:transform .3s ease-in;
+	-webkit-transition: -webkit-transform .3s ease-in;
+	transition: transform .3s ease-in;
 }
 .easyh5-move{
-	-webkit-transform:translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
 }
 .easyh5-pre{
-	-webkit-transform:translate3d(0,-100%,0);
-	transform:translate3d(0,-100%,0);
+	-webkit-transform: translate3d(0,-100%,0);
+	transform: translate3d(0,-100%,0);
 }
 .easyh5-next{
-	-webkit-transform:translate3d(0,100%,0);
-	transform:translate3d(0,100%,0);
+	-webkit-transform: translate3d(0,100%,0);
+	transform: translate3d(0,100%,0);
 }
 .easyh5-arrow{
 	position: absolute;
