@@ -91,13 +91,25 @@
             };
             _this.settings.size = $node.find(_this.settings.page).length;
             
-            _this.resetMeta();
+            _this.initArrow();
+            _this.resetView();
             _this.resetPlacement();
             // 第一屏添加current样式
             $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]).addClass('easyh5-current');
         },
+        initArrow: function(){
+            var _this = this,
+                $node = _this.$node,
+                arrow = '<div class="easyh5-arrow"> \
+                        <div class="easyh5-arrow-in"> \
+                            <span class="easyh5-arrow-l"><i></i></span> \
+                            <span class="easyh5-arrow-r"><i></i></span> \
+                        </div> \
+                    </div>';
+            $node.append(arrow);
+        },
         // 根据屏幕比例设置内容区域的scale及left
-        resetMeta: function(){
+        resetView: function(){
             var _this = this,
                 $node = _this.$node,
                 $contents = $($node.find('.easyh5-content')),
@@ -125,7 +137,6 @@
                 '-webkit-transform' : 'scale('+scale+')',
                 'transform' : 'scale('+scale+')',
             });
-
         },
         resetPlacement: function(){
             var _this = this,
