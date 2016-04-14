@@ -92,21 +92,20 @@
             _this.settings.size = $node.find(_this.settings.page).length;
             
             _this.initArrow();
+            _this.resetContent();
             _this.resetView();
             _this.resetPlacement();
             // 第一屏添加current样式
             $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]).addClass('easyh5-current');
         },
         initArrow: function(){
-            var _this = this,
-                $node = _this.$node,
-                arrow = '<div class="easyh5-arrow"> \
+            var arrow = '<div class="easyh5-arrow"> \
                         <div class="easyh5-arrow-in"> \
                             <span class="easyh5-arrow-l"><i></i></span> \
                             <span class="easyh5-arrow-r"><i></i></span> \
                         </div> \
                     </div>';
-            $node.append(arrow);
+            this.$node.append(arrow);
         },
         resetView: function(){ 
             // 根据屏幕比例设置内容区域的scale及left
@@ -163,17 +162,23 @@
             });
         },
         resetClass: function(){
-            var _this = this,
-                $node = _this.$node;
-            $($node.find('.easyh5-active')).removeClass('easyh5-active');
-            $($node.find('.easyh5-anim')).removeClass('easyh5-anim');
+            $(this.$node.find('.easyh5-active')).removeClass('easyh5-active');
+            $(this.$node.find('.easyh5-anim')).removeClass('easyh5-anim');
+        },
+        resetContent: function(){
+            var $node = this.$node;
+            var contents = $node.find('.easyh5-page');
+            $.each(contents, function(key,node){
+                var ele = node.innerHTML;
+                $(node).html('<div class="easyh5-content"></div>');
+                $($(node).find('.easyh5-content')).html(ele);
+            });
         },
         checkLoop: function(s){
-            var _this = this,
-                flag = true;
-            if(!_this.options.loop){
-                if(_this.settings.currentIndex == 0 && s > 0) flag = false;
-                if(_this.settings.currentIndex == _this.settings.size - 1 && s < 0) flag = false;
+            var flag = true;
+            if(!this.options.loop){
+                if(this.settings.currentIndex == 0 && s > 0) flag = false;
+                if(this.settings.currentIndex == this.settings.size - 1 && s < 0) flag = false;
             }
             return flag;
         },
@@ -221,7 +226,7 @@
                     _this.resetPlacement();
                 },_this.options.duration);
             }
-        },
+        }
     };
 
     $.fn.easyh5 = function(option) {
