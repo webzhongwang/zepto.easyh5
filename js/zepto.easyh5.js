@@ -78,6 +78,7 @@
             });
             // 判断是否要向上或向下滚动一屏
             $node.on('touchend', function(e) {
+
                 var s = e.changedTouches[0].clientY - _this.startY,
                     persent = s / $node.height(),
                     i = 0;  
@@ -89,6 +90,8 @@
                 _this.checkLoop(s) && _this.moveTo(_this.settings.currentIndex + i);
             });
             $node.on('touchmove', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
                 //移动的距离
                 var s = e.changedTouches[0].clientY - _this.startY;
                 _this.checkLoop(s) && move($node, s, _this);
