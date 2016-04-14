@@ -7,7 +7,7 @@
 
 ## 依赖包
 	
-	[Zepto.js](https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js)
+	[Zepto](https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js)
 
 ## 快速上手
 ### 全屏滚动
