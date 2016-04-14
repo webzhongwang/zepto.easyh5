@@ -1,5 +1,5 @@
 {
-  "name": "easyh5",
+  "name": "zepto.easyh5",
   "version": "1.0.0",
   "description": "快速构建html5应用",
   "main": "Gruntfile.js",
@@ -17,6 +17,7 @@
     "fullpage"
   ],
   "author": "zhongwang",
+  "email": "webzhongwang@gmail.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/webzhongwang/easyh5/issues"
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/webzhongwang/easyh5#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-uglify": "^1.0.1",
     "load-grunt-tasks": "^3.5.0"

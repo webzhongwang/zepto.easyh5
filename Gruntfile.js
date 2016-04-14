@@ -2,15 +2,14 @@ module.exports = function(grunt) {
 
 	//加载所有任务
 	require('load-grunt-tasks')(grunt);
-	//config
+	// config
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		//压缩JS
+		// 压缩JS
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-				footer: '\n/*footer*/'
+				banner: '/*! <%= pkg.name %> 作者:<%= pkg.author %>；日期:<%= grunt.template.today("yyyy-mm-dd") %>；email:<%= pkg.email %>；*/\n',
 			},
 			target: {
 				files: {
@@ -20,7 +19,7 @@ module.exports = function(grunt) {
 			}
 		},
 
-		//压缩CSS
+		// 压缩CSS
 		cssmin: {
 			options: {
 				banner: '/*! 111<%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -31,10 +30,14 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
+		// clean
+		clean: ["dist"]
 	});
 
 	//注册事件
 	grunt.registerTask('dist',[
+		'clean',
 		'uglify:target',
 		'cssmin:target'
 	]);
