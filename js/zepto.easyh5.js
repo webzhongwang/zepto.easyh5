@@ -37,19 +37,22 @@
         anim($moveNode);
     }
 
-    // 初始化每页的动画
+    /*
+     * 初始化每页的动画
+     * @param: $page:启动动画的page
+     *
+     */ 
     function anim($page){
         var $eles = $($page.find('[delay]'));
         $.each($eles, function (key,node){
             var $this = $(node),
                 delay = parseFloat($this.attr('delay')) ? parseFloat($this.attr('delay')) : 0;
-            delay = (delay*1000 + 100)/1000;   //延迟0.1s
+            delay = (delay*1000 + 0)/1000;   //延迟0.1s
             console.log(delay);
             $this.addClass($this.attr('data-class'));
-            $this.css({
-                '-webkit-animation-delay': delay + 's',
-                'animation-delay': delay + 's'
-            });
+            node.style['webkitAnimationDelay'] = delay + 's';
+            node.style['animationDelay'] = delay + 's';
+
         });
     }
 
