@@ -9,7 +9,7 @@
     var defaults = {
         start: 0,
         duration: 500, // 动画的时间；单位：毫秒
-        loop: false,
+        loop: true,
         width: 320,
         height: 480,
         persent: 0.15 //滚动屏幕的百分比时触发换页
@@ -29,14 +29,11 @@
      */ 
     function move($node, s, _this) {
 
-        //
         var $moveNode = null;
         if(s > 0) $moveNode = $node.find('.easyh5-pre');
         if(s < 0) $moveNode = $node.find('.easyh5-next')
-
         $moveNode.addClass('easyh5-active');
 
-        //var ds = s + 'px';
         var ds = s > 0 ? s - $node.height() : s + $node.height();
         $moveNode.css({
             '-webkit-transform' : 'translate3d( 0px, ' + ds + 'px,0px);',
@@ -44,11 +41,13 @@
         });
     }
 
+    //初始化
     function init(options) {
         this.ininSetting(options);
         this.initEvent();
     }
 
+    // 构造函数
     function Easyh5($node, options) {
         this.$node = $node;
         init.call(this, options);
@@ -87,17 +86,48 @@
             var _this = this,
                 $node = _this.$node;
             // 设置
-            this.settings = {
+            _this.settings = {
                 currentIndex: 0,
                 page: '.easyh5-page'
             };
-            this.settings.size = $node.find(_this.settings.page).length;
+            _this.settings.size = $node.find(_this.settings.page).length;
             // 参数设置
-            this.options = $.extend({}, defaults, options);
-            // 第一屏添加current样式
-            $(this.$node.find(this.settings.page)[0]).addClass('easyh5-current');
+            _this.options = $.extend({}, defaults, options);
+            _this.resetMeta();
             _this.resetPlacement();
-            
+            // 第一屏添加current样式
+            $(_this.$node.find(this.settings.page)[0]).addClass('easyh5-current');
+        },
+        // 根据屏幕比例设置内容区域的scale及left
+        resetMeta: function(){
+            var _this = this,
+                $node = _this.$node,
+                $contents = $($node.find('.easyh5-content')),
+                width = _this.options.width,
+                height = _this.options.height
+                windowWidth = $node.width(),
+                windowHeight = $node.height(),
+                scale = 1,
+                b = width/height,
+                windowB = windowWidth/windowHeight,
+                dl = (windowWidth - width) / 2;  // left
+                dt = (windowHeight - height) / 2; // top
+
+            $contents.css({
+                width: width,
+                height: height,
+            });
+
+            if (b <= windowB) scale = windowHeight/height;
+            else scale = windowWidth/width;
+                
+            $contents.css({
+                left: dl + 'px',
+                top: dt + 'px',
+                '-webkit-transform' : 'scale('+scale+')',
+                'transform' : 'scale('+scale+')',
+            });
+
         },
         resetPlacement: function(){
             var _this = this,
@@ -128,7 +158,6 @@
                 $node = _this.$node;
             $($node.find('.easyh5-active')).removeClass('easyh5-active');
             $($node.find('.easyh5-anim')).removeClass('easyh5-anim');
-
         },
         checkLoop: function(s){
             var _this = this,
@@ -192,14 +221,14 @@
         }
         return this;
     };
-    $.fn.easyh5.version = '0.1.0';
+    //$.fn.easyh5.version = '0.1.0';
     //暴露方法
-    $.each(['update', 'moveTo', 'moveNext', 'movePrev', 'start', 'stop', 'getCurrentIndex', 'holdTouch', 'unholdTouch'], function(key, val) {
-        $.fn.easyh5[val] = function() {
-            if (!easyh5) {
-                return 0;
-            }
-            return easyh5[val].apply(easyh5, [].slice.call(arguments, 0));
-        };
-    });
+    // $.each(['update', 'moveTo', 'moveNext', 'movePrev', 'start', 'stop', 'getCurrentIndex', 'holdTouch', 'unholdTouch'], function(key, val) {
+    //     $.fn.easyh5[val] = function() {
+    //         if (!easyh5) {
+    //             return 0;
+    //         }
+    //         return easyh5[val].apply(easyh5, [].slice.call(arguments, 0));
+    //     };
+    // });
 }(Zepto, window));
