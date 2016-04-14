@@ -47,8 +47,6 @@
         $.each($eles, function (key,node){
             var $this = $(node),
                 delay = parseFloat($this.attr('delay')) ? parseFloat($this.attr('delay')) : 0;
-            delay = (delay*1000 + 0)/1000;   //延迟0.1s
-            console.log(delay);
             $this.addClass($this.attr('data-class'));
             node.style['webkitAnimationDelay'] = delay + 's';
             node.style['animationDelay'] = delay + 's';
