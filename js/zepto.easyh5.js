@@ -27,7 +27,7 @@
      * @param: _this:easyh5对像
      * 目前仅支持竖直方向上
      */ 
-    function move($node, s) {
+    function move($node, s, _this) {
 
         //
         var $moveNode = null;
@@ -65,22 +65,22 @@
                 _this.resetStyle();
                 _this.resetClass();
             });
+            // 判断是否要向上或向下滚动一屏
             $node.on('touchend', function(e) {
-                
-                // 判断是否要向上或向下滚动一屏
-                var persent = (e.changedTouches[0].clientY - _this.startY) / $node.height(),
+                var s = e.changedTouches[0].clientY - _this.startY,
+                    persent = s / $node.height(),
                     i = 0;  
 
                 if(Math.abs(persent) >= _this.options.persent){
                     if (persent < 0) i = 1;
                      if (persent > 0) i = -1;
                 }
-                _this.moveTo(_this.settings.currentIndex + i);
+                _this.checkLoop(s) && _this.moveTo(_this.settings.currentIndex + i);
             });
             $node.on('touchmove', function(e) {
                 //移动的距离
                 var s = e.changedTouches[0].clientY - _this.startY;
-                move($node, s);
+                _this.checkLoop(s) && move($node, s, _this);
             });
         },
         ininSetting: function(options){
@@ -130,6 +130,15 @@
             $($node.find('.easyh5-anim')).removeClass('easyh5-anim');
 
         },
+        checkLoop: function(s){
+            var _this = this,
+                flag = true;
+            if(!_this.options.loop){
+                if(_this.settings.currentIndex == 0 && s > 0) flag = false;
+                if(_this.settings.currentIndex == _this.settings.size - 1 && s < 0) flag = false;
+            }
+            return flag;
+        },
         moveTo: function(target) {
 
             var _this = this,
@@ -156,8 +165,8 @@
                 //添加动画时长
                 var $targetNode = $($node.find(this.settings.page)[target]);
                 $targetNode.css({
-                    '-webkit-transition':'transform '+_this.options.duration/1000+'s',
-                    'transition':'transform '+_this.options.duration/1000+'s'
+                    '-webkit-transition':'transform '+_this.options.duration/1000+'s ease-in',
+                    'transition':'transform '+_this.options.duration/1000+'s ease-in'
                 })
                 $targetNode.addClass('easyh5-active');
                 
