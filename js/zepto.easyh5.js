@@ -1,6 +1,6 @@
 ;(function($, window) {
     if (typeof $ === 'undefined') {
-        throw new Error('easyh5 requires Zepto');
+        throw new Error('Easyh5 requires Zepto');
     }
 
     var easyh5 = null;
@@ -8,7 +8,7 @@
     //默认参数
     var defaults = {
         start: 1,       // 初始化时显示第几屏 从0开始
-        duration: 500,  // 动画的时间；单位：毫秒
+        duration: 300,  // 动画的时间；单位：毫秒
         loop: true,     // 是否循环
         width: 320,     // 设置内容区域宽度
         height: 480,    // 设置内容区域高度
@@ -108,8 +108,8 @@
                     </div>';
             $node.append(arrow);
         },
-        // 根据屏幕比例设置内容区域的scale及left
-        resetView: function(){
+        resetView: function(){ 
+            // 根据屏幕比例设置内容区域的scale及left
             var _this = this,
                 $node = _this.$node,
                 $contents = $($node.find('.easyh5-content')),
@@ -203,8 +203,8 @@
                 //添加动画时长
                 var $targetNode = $($node.find(this.settings.page)[target]);
                 $targetNode.css({
-                    '-webkit-transition':'transform '+_this.options.duration/1000+'s ease-in',
-                    'transition':'transform '+_this.options.duration/1000+'s ease-in'
+                    '-webkit-transition':'transform '+_this.options.duration/1000+'s ease-in-out',
+                    'transition':'transform '+_this.options.duration/1000+'s ease-in-out'
                 })
                 $targetNode.addClass('easyh5-active');
                 
