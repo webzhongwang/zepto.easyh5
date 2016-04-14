@@ -17,6 +17,7 @@ html,body{
 .easyh5-content{
 	position: absolute;
 	top:0;
+	left:0;
 	background-color: rgba(222,0,0,.4);
 }
 .easyh5-current{

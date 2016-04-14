@@ -7,18 +7,13 @@
 
     //默认参数
     var defaults = {
-        start: 0,
-        duration: 500, // 动画的时间；单位：毫秒
-        loop: true,
-        width: 320,
-        height: 480,
-        persent: 0.15 //滚动屏幕的百分比时触发换页
+        start: 1,       // 初始化时显示第几屏 从0开始
+        duration: 500,  // 动画的时间；单位：毫秒
+        loop: true,     // 是否循环
+        width: 320,     // 设置内容区域宽度
+        height: 480,    // 设置内容区域高度
+        persent: 0.15   //滚动屏幕的百分比时触发换页
     };
-
-    // 阻止默认事件
-    function touchmove(e) {
-        e.preventDefault();
-    }
 
     /*
      * 控制元素移动
@@ -85,18 +80,21 @@
         ininSetting: function(options){
             var _this = this,
                 $node = _this.$node;
+
+            // 参数设置
+            _this.options = $.extend({}, defaults, options);
+
             // 设置
             _this.settings = {
-                currentIndex: 0,
+                currentIndex: _this.options.start,
                 page: '.easyh5-page'
             };
             _this.settings.size = $node.find(_this.settings.page).length;
-            // 参数设置
-            _this.options = $.extend({}, defaults, options);
+            
             _this.resetMeta();
             _this.resetPlacement();
             // 第一屏添加current样式
-            $(_this.$node.find(this.settings.page)[0]).addClass('easyh5-current');
+            $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]).addClass('easyh5-current');
         },
         // 根据屏幕比例设置内容区域的scale及left
         resetMeta: function(){
