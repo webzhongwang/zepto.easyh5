@@ -8,9 +8,41 @@
     <meta http-equiv="expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" servergenerated="true"/>
     
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/easyh5.css">
-	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../src/animate.css">
+    <link rel="stylesheet" href="../src/easyh5.css">
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		.s1{
+			background-color: lime;
+		}
+		.s2{
+			background-color: blue;
+		}
+		.s3{
+			background-color: yellow;
+		}
+		.s4{
+			background-color: red;
+		}
+		.a{
+			position: absolute;
+			top:60px;
+			left:100px; 
+		}
+		.b{
+			position: absolute;
+			top:180px;
+			left:50px; 
+		}
+		.c{
+			position: absolute;
+			top:340px;
+			left:50px; 
+		}
+	</style>
 </head>
 <body>
 	<div id="easyh5" class="easyh5">
@@ -35,8 +67,8 @@
 	    	<p class="c" data-class="bounceInLeft animated" delay="0.7">4footer</p>
 	    </section>
 	</div>
-	<script type="text/javascript" src="js/zepto.min.js"></script>
-	<script type="text/javascript" src="js/zepto.easyh5.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+	<script type="text/javascript" src="../src/zepto.easyh5.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('#easyh5').easyh5();
