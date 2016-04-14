@@ -50,6 +50,7 @@
 
     Easyh5.prototype = {
         initEvent: function() {
+            // 初始化touch事件
             var _this = this,
                 $node = _this.$node;
 
@@ -78,6 +79,7 @@
             });
         },
         ininSetting: function(options){
+            // 初始化设置
             var _this = this,
                 $node = _this.$node;
 
@@ -99,6 +101,7 @@
             $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]).addClass('easyh5-current');
         },
         initArrow: function(){
+            // 创建arrow图标
             var arrow = '<div class="easyh5-arrow"> \
                         <div class="easyh5-arrow-in"> \
                             <span class="easyh5-arrow-l"><i></i></span> \
@@ -138,6 +141,7 @@
             });
         },
         resetPlacement: function(){
+            // 设置上一页、下一页
             var _this = this,
                 $node = _this.$node,
                 $pages = $($node.find(this.settings.page)),
@@ -154,18 +158,19 @@
             $($pages[next]).addClass('easyh5-next');
         },
         resetStyle: function(){
-            var _this = this,
-                $node = _this.$node;
-            $($node.find(this.settings.page)).css({
+            // 设置CSS样式
+            $(this.$node.find(this.settings.page)).css({
                 '-webkit-transition':'',
                 'transition':''
             });
         },
         resetClass: function(){
+            // 设置类名
             $(this.$node.find('.easyh5-active')).removeClass('easyh5-active');
             $(this.$node.find('.easyh5-anim')).removeClass('easyh5-anim');
         },
         resetContent: function(){
+            // 添加内容区域
             var $node = this.$node;
             var contents = $node.find('.easyh5-page');
             $.each(contents, function(key,node){
@@ -175,6 +180,7 @@
             });
         },
         checkLoop: function(s){
+            // 判断是否循环
             var flag = true;
             if(!this.options.loop){
                 if(this.settings.currentIndex == 0 && s > 0) flag = false;
@@ -183,7 +189,7 @@
             return flag;
         },
         moveTo: function(target) {
-
+            // 移动到目标页
             var _this = this,
                 $node = _this.$node;
            
@@ -235,14 +241,5 @@
         }
         return this;
     };
-    //$.fn.easyh5.version = '0.1.0';
-    //暴露方法
-    // $.each(['update', 'moveTo', 'moveNext', 'movePrev', 'start', 'stop', 'getCurrentIndex', 'holdTouch', 'unholdTouch'], function(key, val) {
-    //     $.fn.easyh5[val] = function() {
-    //         if (!easyh5) {
-    //             return 0;
-    //         }
-    //         return easyh5[val].apply(easyh5, [].slice.call(arguments, 0));
-    //     };
-    // });
+    
 }(Zepto, window));
