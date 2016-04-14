@@ -10,7 +10,7 @@
 [Zepto](https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js)
 
 ## 快速上手
-### 全屏滚动
+#### 全屏滚动
 ##### HTML
 
 	<div id="easyh5" class="easyh5">
@@ -23,5 +23,16 @@
 #### JS
 	
 	$('#easyh5').easyh5();
+
+参数
+
+	var defaults = {
+        start: 0,       // 初始化时显示第几屏 默认从0开始
+        duration: 300,  // 滚动到下一屏所需的时间，单位（毫秒），默认300毫秒
+        loop: true,     // 是否可循环激动，默认是true
+        width: 320,     // 设置内容区域宽度 默认320px
+        height: 480,    // 设置内容区域高度 默认480px
+        persent: 0.15   // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
+    };
 
 
