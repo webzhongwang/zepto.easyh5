@@ -98,6 +98,12 @@
                 var s = e.changedTouches[0].clientY - _this.startY;
                 _this.checkLoop(s) && move($node, s, _this);
             });
+
+            //屏幕方向变化时重置页面
+            $(window).on('orientationchange', function(e){
+                _this.resetView();
+            });
+
         },
         ininSetting: function(options){
             // 初始化设置
@@ -283,5 +289,7 @@
         }
         return this;
     };
+
+    
     
 }(Zepto, window));
