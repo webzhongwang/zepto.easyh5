@@ -7,7 +7,7 @@
 
     //默认参数
     var defaults = {
-        start: 1,       // 初始化时显示第几屏 从0开始
+        start: 0,       // 初始化时显示第几屏 从0开始
         duration: 300,  // 动画的时间；单位：毫秒
         loop: true,     // 是否循环
         width: 320,     // 设置内容区域宽度
@@ -33,6 +33,22 @@
         $moveNode.css({
             '-webkit-transform' : 'translate3d( 0px, ' + ds + 'px,0px);',
             'transform' : 'translate3d( 0px, ' + ds + 'px, 0px);'
+        });
+        anim($moveNode);
+    }
+
+    // 初始化每页的动画
+    function anim($page){
+        var $eles = $($page.find('[delay]'));
+        $.each($eles, function (key,node){
+            var $this = $(node),
+                delay = parseFloat($this.attr('delay')) ? parseFloat($this.attr('delay')) : 0;
+            delay += 0.2;   //延迟0.2s
+            $this.addClass($this.attr('data-class'));
+            $this.css({
+                '-webkit-animation-delay': delay + 's',
+                'animation-delay': delay + 's'
+            });
         });
     }
 
@@ -98,7 +114,9 @@
             _this.resetView();
             _this.resetPlacement();
             // 第一屏添加current样式
-            $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]).addClass('easyh5-current');
+            var $currentPage = $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]);
+            $currentPage.addClass('easyh5-current');
+            anim($currentPage);
         },
         initArrow: function(){
             // 创建arrow图标
@@ -156,6 +174,8 @@
             $($node.find('.easyh5-next')).removeClass('easyh5-next');
             $($pages[pre]).addClass('easyh5-pre');
             $($pages[next]).addClass('easyh5-next');
+            _this.clearPageAnim($($pages[pre]));
+            _this.clearPageAnim($($pages[next]));
         },
         resetStyle: function(){
             // 设置CSS样式
@@ -187,6 +207,22 @@
                 if(this.settings.currentIndex == this.settings.size - 1 && s < 0) flag = false;
             }
             return flag;
+        },
+        clearPageAnim: function($page){
+            // 清除每页的动画
+            $eles = $($page.find('[delay]'));
+            $.each($eles, function(key, node){
+                var $this = $(node),
+                    dataClass = $this.attr('data-class'),
+                    className = $this.attr('class');
+
+                className = className.replace(dataClass,'');
+                node.className = className;
+            })
+            $eles.css({
+                '-webkit-animation': '',
+                'animation-delay': ''
+            });
         },
         moveTo: function(target) {
             // 移动到目标页
