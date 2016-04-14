@@ -5,6 +5,10 @@
 ## 功能介绍
 实现移动端的单页全屏滚动，参数自定义，预定义移动开发常用的CSS3动画。
 
+## 依赖包
+	
+	[Zepto.js](https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js)
+
 ## 快速上手
 ### 全屏滚动
 ##### HTML
