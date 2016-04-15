@@ -151,6 +151,7 @@
             });
         },
         orientationchange: function(){
+            var _this = this;
             //屏幕方向变化时重置页面
             $(window).on('orientationchange', function(e){
                 _this.resetView();
