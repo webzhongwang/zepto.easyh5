@@ -21,7 +21,7 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/webzhongwang/easyh5/issues"
-  },
+  }, 
   "homepage": "https://github.com/webzhongwang/easyh5#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
