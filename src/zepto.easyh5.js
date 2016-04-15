@@ -10,6 +10,7 @@
         start: 0,       // 初始化时显示第几屏 默认从0开始
         duration: 300,  // 滚动到下一屏所需的时间，单位（毫秒），默认300毫秒
         loop: true,     // 是否可循环激动，默认是true
+        auto: true,     // 是否自动滚屏
         width: 320,     // 设置内容区域宽度 默认320px
         height: 480,    // 设置内容区域高度 默认480px
         persent: 0.15   // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
@@ -68,42 +69,11 @@
 
     Easyh5.prototype = {
         initEvent: function() {
-            // 初始化touch事件
-            var _this = this,
-                $node = _this.$node;
-
-            $node.on('touchstart', function(e) {
-                _this.startX = e.targetTouches[0].clientX;
-                _this.startY = e.targetTouches[0].clientY;
-                _this.resetStyle();
-                _this.resetClass();
-            });
-            // 判断是否要向上或向下滚动一屏
-            $node.on('touchend', function(e) {
-
-                var s = e.changedTouches[0].clientY - _this.startY,
-                    persent = s / $node.height(),
-                    i = 0;  
-
-                if(Math.abs(persent) >= _this.options.persent){
-                    if (persent < 0) i = 1;
-                     if (persent > 0) i = -1;
-                }
-                _this.checkLoop(s) && _this.moveTo(_this.settings.currentIndex + i);
-            });
-            $node.on('touchmove', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                //移动的距离
-                var s = e.changedTouches[0].clientY - _this.startY;
-                _this.checkLoop(s) && move($node, s, _this);
-            });
-
-            //屏幕方向变化时重置页面
-            $(window).on('orientationchange', function(e){
-                _this.resetView();
-            });
-
+            // 初始化事件
+            this.touchstart();
+            this.touchmove();
+            this.touchend();
+            this.orientationchange();
         },
         ininSetting: function(options){
             // 初始化设置
@@ -123,11 +93,55 @@
             _this.initArrow();
             _this.resetContent();
             _this.resetView();
+            _this.initLoading();
             _this.resetPlacement();
             // 第一屏添加current样式
             var $currentPage = $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]);
             $currentPage.addClass('easyh5-current');
             anim($currentPage);
+        },
+        touchstart: function(){
+            // touchstart事件
+            var _this = this;
+            this.$node.on('touchstart', function(e) {
+                _this.startX = e.targetTouches[0].clientX;
+                _this.startY = e.targetTouches[0].clientY;
+                _this.resetStyle();
+                _this.resetClass();
+            });
+        },
+        touchmove: function(){
+            // touchmove事件
+            var _this = this;
+            this.$node.on('touchend', function(e) {
+
+                var s = e.changedTouches[0].clientY - _this.startY,
+                    persent = s / _this.$node.height(),
+                    i = 0;  
+
+                if(Math.abs(persent) >= _this.options.persent){
+                    if (persent < 0) i = 1;
+                     if (persent > 0) i = -1;
+                }
+                _this.checkLoop(s) && _this.moveTo(_this.settings.currentIndex + i);
+            });
+        },
+        touchend: function(){
+            // touchend事件
+            var _this = this;
+            this.$node.on('touchmove', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                //移动的距离
+                var s = e.changedTouches[0].clientY - _this.startY;
+                _this.checkLoop(s) && move(_this.$node, s, _this);
+            });
+        },
+        orientationchange: function(){
+            //屏幕方向变化时重置页面
+            $(window).on('orientationchange', function(e){
+                _this.resetView();
+            });
         },
         initArrow: function(){
             // 创建arrow图标
@@ -138,6 +152,12 @@
                         </div> \
                     </div>';
             this.$node.append(arrow);
+        },
+        initLoading: function(){
+            // loading
+            $(this.$node.find('.easyh5-page')).css({
+                opacity: 1
+            });
         },
         resetView: function(){ 
             // 根据屏幕比例设置内容区域的scale及left
@@ -289,7 +309,5 @@
         }
         return this;
     };
-
-    
     
 }(Zepto, window));
