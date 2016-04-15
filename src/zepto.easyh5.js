@@ -1,3 +1,10 @@
+/*
+ * zepto.easyh5
+ * author zhongwang
+ * email webzhongwang@gmail.com
+ * github https://github.com/webzhongwang/easyh5.git
+ *
+ */
 ;(function($, window) {
     if (typeof $ === 'undefined') {
         throw new Error('Easyh5 requires Zepto');
