@@ -355,7 +355,9 @@
             //屏幕方向变化时重置页面
             var _this = this;
             $(window).on('orientationchange', function(e){
-                _this.resetView();
+                setTimeout(function(){
+                    _this.resetView();
+                },30)
             });
         }
     };
