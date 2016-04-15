@@ -59,7 +59,7 @@
         $.each($eles, function (key,node){
             var $this = $(node),
                 delay = parseFloat($this.attr('delay')) ? parseFloat($this.attr('delay')) : 0;
-            $this.addClass($this.attr('data-class'));
+            $this.addClass($this.attr('anim-class'));
             node.style['webkitAnimationDelay'] = delay + 's';
             node.style['animationDelay'] = delay + 's';
 
@@ -280,7 +280,7 @@
             $eles = $($page.find('[delay]'));
             $.each($eles, function(key, node){
                 var $this = $(node),
-                    dataClass = $this.attr('data-class'),
+                    dataClass = $this.attr('anim-class'),
                     className = $this.attr('class');
 
                 className = className.replace(dataClass,'');
