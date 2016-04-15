@@ -54,4 +54,4 @@
 	    </section>
 	</div>
 
-delay代表动画延迟的时长，单位（秒），无需延时动画的请加上空的delay属性；data-class代表动画样式
+delay代表动画延迟的时长，单位（秒），无需延时动画的请加上空的delay属性；data-class代表动画类名
