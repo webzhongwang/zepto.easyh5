@@ -84,8 +84,8 @@
             this.touchstart();
             this.touchmove();
             this.touchend();
-            this.orientationchange();
             this.autoPlay();
+            this.orientationchange();
         },
         ininSetting: function(options){
             // 初始化设置
@@ -150,15 +150,7 @@
                 _this.checkLoop(s) && _this.moveTo(_this.settings.currentIndex + i);
             });
         },
-        orientationchange: function(){
-            var _this = this;
-            //屏幕方向变化时重置页面
-            $(window).on('orientationchange', function(e){
-                 setTimeout(function(){
-                    _this.resetView();
-                },30)
-            });
-        },
+        
         initArrow: function(){
             // 创建arrow图标
             var arrow = '<div class="easyh5-arrow"> \
@@ -358,6 +350,13 @@
                     _this.resetPageNum();
                 },_this.options.duration);
             }
+        },
+        orientationchange: function(){
+            //屏幕方向变化时重置页面
+            var _this = this;
+            $(window).on('orientationchange', function(e){
+                _this.resetView();
+            });
         }
     };
 
