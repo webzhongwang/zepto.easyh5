@@ -98,7 +98,8 @@
             // 设置
             _this.settings = {
                 currentIndex: _this.options.start,
-                page: '.easyh5-page'
+                page: '.easyh5-page',
+                autoTimer: null
             };
             _this.settings.size = $node.find(_this.settings.page).length;
             
@@ -121,7 +122,9 @@
                 _this.startY = e.targetTouches[0].clientY;
                 _this.resetStyle();
                 _this.resetClass();
+                clearInterval(_this.settings.autoTimer);
             });
+
         },
         touchmove: function(){
             // touchend事件
@@ -148,6 +151,7 @@
                      if (persent > 0) i = -1;
                 }
                 _this.checkLoop(s) && _this.moveTo(_this.settings.currentIndex + i);
+                _this.autoPlay();
             });
         },
         
@@ -185,15 +189,13 @@
                 dir = this.options.dir;
 
             if(!_this.options.auto) return false;
-
-            setInterval(function(){
+            _this.settings.autoTimer = setInterval(function(){
                 if(dir == 'top'){
                     _this.moveTo(_this.settings.currentIndex + 1);
                 } else if (dir == 'bottom') {
                     _this.moveTo(_this.settings.currentIndex - 1);
                 }
             }, _this.options.autoDuration * 1000);
-            
         },
         resetView: function(){ 
             // 根据屏幕比例设置内容区域的scale及left
@@ -317,6 +319,7 @@
                     });
                 setTimeout(function(){
                     _this.resetPlacement();
+                    // _this.autoPlay();
                 },_this.options.duration);
             } else {  
 
@@ -348,6 +351,7 @@
                     _this.clearPageStyle($targetNode);
                     _this.resetPlacement();
                     _this.resetPageNum();
+                    // _this.autoPlay();
                 },_this.options.duration);
             }
         },
