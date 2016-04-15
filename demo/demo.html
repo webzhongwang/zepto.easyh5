@@ -7,69 +7,82 @@
     <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
     <meta http-equiv="expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" servergenerated="true"/>
-    <link rel="stylesheet" href="../src/animate.css">
-    <link rel="stylesheet" href="../src/zepto.easyh5.css">
-
+    <link rel="stylesheet" href="../dist/zepto.easyh5.min.css">
 	<style type="text/css">
 		*{
 			padding:0;
 			margin:0;
 		}
-		.s1{
-			background-color: silver;
+		body{
+			color: #fff;
+			font-family: 'Microsoft Yahei';
 		}
-		.s2{
-			background-color: blue;
+		.page1{
+			background-color: #1cc1d0;
 		}
-		.s3{
-			background-color: yellow;
+		.page2{
+			background-color: #efc3b3;
 		}
-		.s4{
-			background-color: red;
+		.page3{
+			background-color: #6d4ccc;
 		}
-		.a{
+		.page4{
+			background-color: #299d42;
+		}
+		.page5{
+			background-color: #723a09;
+		}
+		.page6{
+			background-color: #690f98;
+		}
+		.p1-1{
 			position: absolute;
-			top:60px;
-			left:100px; 
+			width: 100%;
+			font-size: 30px;
+			line-height: 30px;
+			text-align: center;
+			top:100px;
 		}
-		.b{
+		.p1-2{
+			font-size: 20px;
+			line-height: 20px;
 			position: absolute;
-			top:180px;
-			left:50px; 
+			width: 100%;
+			text-align: center;
+			top:160px;
 		}
-		.c{
-			position: absolute;
-			top:340px;
-			left:50px; 
-		}
-	</style>
+	</style>	
 </head>
 <body>
 	<div id="easyh5" class="easyh5">
-	    <section class="easyh5-page s1">
-	    	<h1 class="a" anim-class="bounceInRight animated" delay="0.4">title</h1>
-	    	<div class="b" anim-class="slideInUp animated" delay>content</div>
-	    	<p class="c " anim-class="fadeIn animated" delay="0.8">footer</p>
+	    <section class="easyh5-page page1">
+	    	<h1 class="p1-1" anim-class="bounceInUp animated" delay="0.3">Easyh5</h1>
+	    	<h3 class="p1-2" anim-class="slideInLeft animated" delay="0.6">快速构建移动应用</h3>
 	    </section>
-	    <section class="easyh5-page s2">
-	    	<h1 class="a " anim-class="bounceInRight animated" delay="0.3">2title</h1>
-	    	<div class="b" anim-class="bounceInUp animated" delay="0.6">2content</div>
-	    	<p class="c" anim-class="bounceInLeft animated" delay="0.7">2footer</p>
+	    <section class="easyh5-page page2">
+	    	<h1 class="p1-1" anim-class="fadeInDown animated" delay="0.5">测试二</h1>
+	    	<h3 class="p1-2" anim-class="flipInX animated" delay="0.8">这是测试二的说明</h3>
 	    </section>
-	    <section class="easyh5-page s3">
-	    	<h1 class="a " anim-class="bounceInRight animated" delay="0.2">3title</h1>
-	    	<div class="b" anim-class="bounceInUp animated" delay="0.4">3content</div>
-	    	<p class="c" anim-class="bounceInLeft animated" delay="0.8">3footer</p>
+	    <section class="easyh5-page page3">
+	    	<h1 class="p1-1" anim-class="lightSpeedIn animated" delay="0.6">测试三</h1>
+	    	<h3 class="p1-2" anim-class="rotateInUpLeft animated" delay="0.9">这是测试三的说明</h3>
 	    </section>
-	    <section class="easyh5-page s4">
-	    	<h1 class="a " anim-class="bounceInRight animated" delay="0.3">4title</h1>
-	    	<div class="b" anim-class="bounceInUp animated" delay="0.2">4content</div>
-	    	<p class="c" anim-class="bounceInLeft animated" delay="0.7">4footer</p>
+	    <section class="easyh5-page page4">
+	    	<h1 class="p1-1" anim-class="zoomInLeft animated" delay="0.7">测试四</h1>
+	    	<h3 class="p1-2" anim-class="rollIn animated" delay="0.6">这是测试四的说明</h3>
+	    </section>
+	    <section class="easyh5-page page5">
+	    	<h1 class="p1-1" anim-class="bounceInDown animated" delay="0.6">测试五</h1>
+	    	<h3 class="p1-2" anim-class="flipInY animated" delay="0.9">这是测试五的说明</h3>
+	    </section>
+	    <section class="easyh5-page page6">
+	    	<h1 class="p1-1" anim-class="rotateInDownRight animated" delay="0.6">测试六</h1>
+	    	<h3 class="p1-2" anim-class="lightSpeedIn animated" delay="0.8">这是测试六的说明</h3>
 	    </section>
 	    
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
-	<script type="text/javascript" src="../src/zepto.easyh5.js"></script>
+	<script type="text/javascript" src="../dist/zepto.easyh5.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('#easyh5').easyh5();
