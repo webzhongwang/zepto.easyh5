@@ -60,7 +60,7 @@ delay代表动画延迟的时长，单位（秒），无需延时动画的请加
 
 #### 关于Animate.css
 
-项目集成了[Animate.css](https://daneden.github.io/animate.css/) 这里要感谢Animate.css的作者[daneden](https://github.com/daneden/)提供优秀的CSS3动画。所有动画都需加上基础的动画设置类“animated”
+项目集成了[Animate.css](https://daneden.github.io/animate.css/)，这里要感谢Animate.css的作者 [daneden](https://github.com/daneden/) 提供优秀的CSS3动画。所有动画都需加上基础的动画设置类“animated”。
 
 * bounce
 * flash
