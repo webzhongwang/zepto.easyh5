@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>zepto.easyh5</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" servergenerated="true"/>
+    <link rel="stylesheet" href="../src/animate.css">
+    <link rel="stylesheet" href="../src/zepto.easyh5.css">
+
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		.s1{
+			background-color: silver;
+		}
+		.s2{
+			background-color: blue;
+		}
+		.s3{
+			background-color: yellow;
+		}
+		.s4{
+			background-color: red;
+		}
+		.a{
+			position: absolute;
+			top:60px;
+			left:100px; 
+		}
+		.b{
+			position: absolute;
+			top:180px;
+			left:50px; 
+		}
+		.c{
+			position: absolute;
+			top:340px;
+			left:50px; 
+		}
+	</style>
+</head>
+<body>
+	<div id="easyh5" class="easyh5">
+	    <section class="easyh5-page s1">
+	    	<h1 class="a" data-class="bounceInRight animated" delay="0.4">title</h1>
+	    	<div class="b" data-class="slideInUp animated" delay>content</div>
+	    	<p class="c " data-class="fadeIn animated" delay="0.8">footer</p>
+	    </section>
+	    <section class="easyh5-page s2">
+	    	<h1 class="a " data-class="bounceInRight animated" delay="0.3">2title</h1>
+	    	<div class="b" data-class="bounceInUp animated" delay="0.6">2content</div>
+	    	<p class="c" data-class="bounceInLeft animated" delay="0.7">2footer</p>
+	    </section>
+	    <section class="easyh5-page s3">
+	    	<h1 class="a " data-class="bounceInRight animated" delay="0.2">3title</h1>
+	    	<div class="b" data-class="bounceInUp animated" delay="0.4">3content</div>
+	    	<p class="c" data-class="bounceInLeft animated" delay="0.8">3footer</p>
+	    </section>
+	    <section class="easyh5-page s4">
+	    	<h1 class="a " data-class="bounceInRight animated" delay="0.3">4title</h1>
+	    	<div class="b" data-class="bounceInUp animated" delay="0.2">4content</div>
+	    	<p class="c" data-class="bounceInLeft animated" delay="0.7">4footer</p>
+	    </section>
+	    
+	</div>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+	<script type="text/javascript" src="../src/zepto.easyh5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#easyh5').easyh5();
+		})
+	</script>
+</body>
+</html>
