@@ -13,6 +13,8 @@
         auto: false,        // 是否自动滚屏
         dir: 'top',         // 自动滚屏的方向，只有auto值为true时有效，取值:top|bottom
         autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位：秒
+        showPageNum: true,  // 是否显示当前页是第几页，从第一页开始计数
+        pageNumPlace: 'right-bottom',   // 显示页码的位置，只有当showPageNum为true时有效，取值:left-top|left-bottom|right-top|right-bottom
         width: 320,         // 设置内容区域宽度 默认320px
         height: 480,        // 设置内容区域高度 默认480px
         persent: 0.15       // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
@@ -98,6 +100,7 @@
             _this.resetView();
             _this.initLoading();
             _this.resetPlacement();
+            _this.resetPageNum();
             // 第一屏添加current样式
             var $currentPage = $(_this.$node.find(this.settings.page)[_this.settings.currentIndex]);
             $currentPage.addClass('easyh5-current');
@@ -162,6 +165,18 @@
                 opacity: 1
             });
         },
+        resetPageNum: function(){
+            if(!this.options.showPageNum) return false;
+
+            var mask = null,
+                n = (this.settings.currentIndex + 1) + '/' + this.settings.size;
+            if(!this.$node.find('.easyh5-mask').size()) {
+                mask = '<span class="easyh5-mask ' + this.options.pageNumPlace + '">' + n + '</span>';
+                this.$node.append(mask);
+            } else {
+                $(this.$node.find('.easyh5-mask')).text(n);
+            }
+        },
         autoPlay: function(){
             // 自动播放
             var _this = this,
@@ -169,8 +184,6 @@
 
             if(!_this.options.auto) return false;
 
-            // _this.resetStyle();
-            // _this.resetClass();
             setInterval(function(){
                 if(dir == 'top'){
                     _this.moveTo(_this.settings.currentIndex + 1);
@@ -332,6 +345,7 @@
                     $targetNode.removeClass('easyh5-active');
                     _this.clearPageStyle($targetNode);
                     _this.resetPlacement();
+                    _this.resetPageNum();
                 },_this.options.duration);
             }
         }

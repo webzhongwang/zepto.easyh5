@@ -101,6 +101,28 @@ html,body{
 	-webkit-transform: rotate(50deg);
 	transform: rotate(50deg);
 }
+.easyh5-mask{
+	position: absolute;
+	z-index: 10;
+	color: #fff;
+	font-size: 12px;
+}
+.easyh5-mask.left-top{
+	left: 5px;
+	top:5px;
+}
+.easyh5-mask.left-bottom{
+	left: 5px;
+	bottom:3px;
+}
+.easyh5-mask.right-top{
+	right: 5px;
+	top:5px;
+}
+.easyh5-mask.right-bottom{
+	right: 5px;
+	bottom:3px;
+}
 @-webkit-keyframes easy-arr{
 	0%, 30% {
 		opacity: 0;
