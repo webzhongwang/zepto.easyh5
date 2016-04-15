@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-	//加载所有任务
+	// 加载所有任务
 	require('load-grunt-tasks')(grunt);
 	// config
 	grunt.initConfig({
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 		clean: ["dist"]
 	});
 
-	//注册事件
+	// 注册事件
 	grunt.registerTask('dist',[
 		'clean',
 		'uglify:target',
