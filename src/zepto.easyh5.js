@@ -38,7 +38,7 @@
 
         var $moveNode = null;
         if(s > 0) $moveNode = $node.find('.easyh5-pre');
-        if(s < 0) $moveNode = $node.find('.easyh5-next')
+        if(s < 0) $moveNode = $node.find('.easyh5-next');
         $moveNode.addClass('easyh5-active');
 
         var ds = s > 0 ? s - $node.height() : s + $node.height();
