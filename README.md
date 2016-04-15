@@ -34,10 +34,24 @@
         loop: true,         // 是否可循环激动，默认是true
         auto: false,        // 是否自动滚屏
         dir: 'top',         // 自动滚屏的方向，只有auto值为true时有效，取值:top|bottom
-        autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位：秒
+        autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位（秒）
         width: 320,         // 设置内容区域宽度 默认320px
         height: 480,        // 设置内容区域高度 默认480px
         persent: 0.15       // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
     };
 
+#### 动画设置
 
+	<div id="easyh5" class="easyh5">
+	    <section class="easyh5-page s1">
+	    	<h1 class="a" data-class="bounceInRight animated" delay="0.4">title</h1>
+	    	<div class="b" data-class="slideInUp animated" delay>content</div>
+	    	<p class="c " data-class="fadeIn animated" delay="0.8">footer</p>
+	    </section>
+	    <section class="easyh5-page s2">
+	    	<h1 class="a " data-class="bounceInRight animated" delay="0.3">2title</h1>
+	    	<p class="c" data-class="bounceInLeft animated" delay="0.7">2footer</p>
+	    </section>
+	</div>
+
+delay代表动画延迟的时长，单位（秒），无需延时动画的请加上空的delay属性；data-class代表动画样式
