@@ -46,17 +46,17 @@
 
 	<div id="easyh5" class="easyh5">
 	    <section class="easyh5-page s1">
-	    	<h1 class="a" data-class="bounceInRight animated" delay="0.4">title</h1>
-	    	<div class="b" data-class="slideInUp animated" delay>content</div>
-	    	<p class="c " data-class="fadeIn animated" delay="0.8">footer</p>
+	    	<h1 class="a" anim-class="bounceInRight animated" delay="0.4">title</h1>
+	    	<div class="b" anim-class="slideInUp animated" delay>content</div>
+	    	<p class="c " anim-class="fadeIn animated" delay="0.8">footer</p>
 	    </section>
 	    <section class="easyh5-page s2">
-	    	<h1 class="a " data-class="bounceInRight animated" delay="0.3">2title</h1>
-	    	<p class="c" data-class="bounceInLeft animated" delay="0.7">2footer</p>
+	    	<h1 class="a " anim-class="bounceInRight animated" delay="0.3">2title</h1>
+	    	<p class="c" anim-class="bounceInLeft animated" delay="0.7">2footer</p>
 	    </section>
 	</div>
 
-delay代表动画延迟的时长，单位（秒），无需延时动画的请加上空的delay属性；data-class代表动画类名
+delay代表动画延迟的时长，单位（秒），无需延时动画的请加上空的delay属性；anim-class代表动画类名
 
 #### 关于Animate.css
 
