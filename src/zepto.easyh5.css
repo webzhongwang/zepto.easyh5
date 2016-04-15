@@ -91,6 +91,7 @@ html,body{
     border-radius: 2px;
     position: absolute;
     top: 5px;
+    box-shadow: 0 -1px 1px #DDD;
 }
 .easyh5-arrow-l i{
 	-webkit-transform: rotate(130deg);

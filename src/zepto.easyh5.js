@@ -7,13 +7,15 @@
 
     //默认参数
     var defaults = {
-        start: 0,       // 初始化时显示第几屏 默认从0开始
-        duration: 300,  // 滚动到下一屏所需的时间，单位（毫秒），默认300毫秒
-        loop: true,     // 是否可循环激动，默认是true
-        auto: true,     // 是否自动滚屏
-        width: 320,     // 设置内容区域宽度 默认320px
-        height: 480,    // 设置内容区域高度 默认480px
-        persent: 0.15   // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
+        start: 0,           // 初始化时显示第几屏 默认从0开始
+        duration: 300,      // 滚动到下一屏所需的时间，单位（毫秒），默认300毫秒
+        loop: true,         // 是否可循环激动，默认是true
+        auto: false,        // 是否自动滚屏
+        dir: 'top',         // 自动滚屏的方向，只有auto值为true时有效，取值:top|bottom
+        autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位：秒
+        width: 320,         // 设置内容区域宽度 默认320px
+        height: 480,        // 设置内容区域高度 默认480px
+        persent: 0.15       // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
     };
 
     /*
@@ -74,6 +76,7 @@
             this.touchmove();
             this.touchend();
             this.orientationchange();
+            this.autoPlay();
         },
         ininSetting: function(options){
             // 初始化设置
@@ -111,6 +114,17 @@
             });
         },
         touchmove: function(){
+            // touchend事件
+            var _this = this;
+            this.$node.on('touchmove', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                //移动的距离
+                var s = e.changedTouches[0].clientY - _this.startY;
+                _this.checkLoop(s) && move(_this.$node, s, _this);
+            });
+        },
+        touchend: function(){
             // touchmove事件
             var _this = this;
             this.$node.on('touchend', function(e) {
@@ -124,17 +138,6 @@
                      if (persent > 0) i = -1;
                 }
                 _this.checkLoop(s) && _this.moveTo(_this.settings.currentIndex + i);
-            });
-        },
-        touchend: function(){
-            // touchend事件
-            var _this = this;
-            this.$node.on('touchmove', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                //移动的距离
-                var s = e.changedTouches[0].clientY - _this.startY;
-                _this.checkLoop(s) && move(_this.$node, s, _this);
             });
         },
         orientationchange: function(){
@@ -158,6 +161,24 @@
             $(this.$node.find('.easyh5-page')).css({
                 opacity: 1
             });
+        },
+        autoPlay: function(){
+            // 自动播放
+            var _this = this,
+                dir = this.options.dir;
+
+            if(!_this.options.auto) return false;
+
+            // _this.resetStyle();
+            // _this.resetClass();
+            setInterval(function(){
+                if(dir == 'top'){
+                    _this.moveTo(_this.settings.currentIndex + 1);
+                } else if (dir == 'bottom') {
+                    _this.moveTo(_this.settings.currentIndex - 1);
+                }
+            }, _this.options.autoDuration * 1000);
+            
         },
         resetView: function(){ 
             // 根据屏幕比例设置内容区域的scale及left
@@ -256,6 +277,15 @@
                 'animation-delay': ''
             });
         },
+        clearPageStyle: function($page){
+            //清除page的style
+            $page.css({
+                '-webkit-transition':'',
+                'transition':'',
+                '-webkit-transform' : '',
+                'transform' : ''
+            });
+        },
         moveTo: function(target) {
             // 移动到目标页
             var _this = this,
@@ -280,8 +310,11 @@
                 if (target >= _this.settings.size) target = 0;
                 
                 _this.settings.currentIndex = target;
-                
-                
+                anim($($node.find('.easyh5-page')[target]));
+
+                // var ele = $node.find('.easyh5-page')[target];
+                // console.log(ele.style.WebkitTransform)
+
                 //添加动画时长
                 var $targetNode = $($node.find(this.settings.page)[target]);
                 $targetNode.addClass('easyh5-active');
@@ -290,13 +323,14 @@
                     'transition':'transform '+_this.options.duration/1000+'s ease-in-out',
                     '-webkit-transform' : 'translateY(0);',
                     'transform' : 'translateY(0);'
-                })
+                });
                 
                 //动画结束之后的操作
                 setTimeout(function(){
                     $($node.find('.easyh5-current')).removeClass('easyh5-current');
                     $targetNode.addClass('easyh5-current');
                     $targetNode.removeClass('easyh5-active');
+                    _this.clearPageStyle($targetNode);
                     _this.resetPlacement();
                 },_this.options.duration);
             }
