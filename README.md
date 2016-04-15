@@ -13,7 +13,7 @@
 
 ## 快速上手
 #### 全屏滚动
-##### HTML
+##### *HTML
 
 	<div id="easyh5" class="easyh5">
 		<section class="easyh5-page">Page 1</section>
@@ -26,7 +26,7 @@
 	
 	$('#easyh5').easyh5();
 
-#### 参数
+#### *参数
 
 	var defaults = {
         start: 0,           // 初始化时显示第几屏 默认从0开始
@@ -40,7 +40,7 @@
         persent: 0.15       // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
     };
 
-#### 动画设置
+#### *动画设置
 
 	<div id="easyh5" class="easyh5">
 	    <section class="easyh5-page s1">
