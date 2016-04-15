@@ -34,7 +34,7 @@
         loop: true,         // 是否可循环激动，默认是true
         auto: false,        // 是否自动滚屏
         dir: 'top',         // 自动滚屏的方向，只有auto值为true时有效，取值:top|bottom
-        autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位：秒
+        autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位（秒）
         showPageNum: true,  // 是否显示当前页是第几页，从第一页开始计数
         pageNumPlace: 'right-bottom',   // 显示页码的位置，只有当showPageNum为true时有效，取值:left-top|left-bottom|right-top|right-bottom
         width: 320,         // 设置内容区域宽度 默认320px
