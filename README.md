@@ -11,6 +11,10 @@
 
 [Zepto](https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js)
 
+## 在线演示
+
+[在线演示](http://webzhongwang.github.io/zepto.easyh5/)
+
 ## 快速上手
 #### 全屏滚动
 ###### HTML
