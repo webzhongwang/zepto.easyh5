@@ -184,8 +184,10 @@
                 var i = '<i class="easyh5-audio"></i>';
                 this.$node.append(i);
             }
-            var audio = '<audio loop="loop" autoplay="autoplay" src="' + this.options.audioSrc + '"></audio>';
-            this.$node.append(audio);
+            var $audio = $('<audio volume=0.1 loop="loop" autoplay="autoplay" src="' + this.options.audioSrc + '"></audio>');
+
+            $audio[0].volume = 0.8;
+            this.$node.append($audio);
         },
         resetPageNum: function(){
             if(!this.options.showPageNum) return false;
