@@ -24,7 +24,7 @@
         pageNumPlace: 'right-bottom',   // 显示页码的位置，只有当showPageNum为true时有效，取值:left-top|left-bottom|right-top|right-bottom
         audio: false,       // 是否添加背景音乐
         showAudio: true,    // 是否显示背景音乐图标，只有当audio为true时生效
-        audioSrc: '',       // 背景音乐地址，只有当audio为true时生效
+        audioSrc: 'http://mp3.9ku.com/mp3/540/539742.mp3',       // 背景音乐地址，只有当audio为true时生效
         width: 320,         // 设置内容区域宽度 默认320px
         height: 480,        // 设置内容区域高度 默认480px
         persent: 0.15       // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
@@ -184,7 +184,7 @@
                 var i = '<i class="easyh5-audio"></i>';
                 this.$node.append(i);
             }
-            var audio = '<audio src="' + this.audioSrc + '"></audio>';
+            var audio = '<audio loop="loop" autoplay="autoplay" src="' + this.options.audioSrc + '"></audio>';
             this.$node.append(audio);
         },
         resetPageNum: function(){
