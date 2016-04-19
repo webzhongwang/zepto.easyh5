@@ -161,7 +161,6 @@
                 _this.autoPlay();
             });
         },
-        
         initArrow: function(){
             // 创建arrow图标
             var arrow = '<div class="easyh5-arrow"> \
