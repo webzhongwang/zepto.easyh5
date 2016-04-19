@@ -133,7 +133,7 @@
 
         },
         touchmove: function(){
-            // touchend事件
+            // touchmove事件
             var _this = this;
             this.$node.on('touchmove', function(e) {
                 e.stopPropagation();
@@ -144,7 +144,7 @@
             });
         },
         touchend: function(){
-            // touchmove事件
+            // touchend事件
             var _this = this;
             this.$node.on('touchend', function(e) {
 
