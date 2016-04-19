@@ -130,6 +130,31 @@ html,body{
 	right: 5px;
 	bottom:3px;
 }
+.easyh5-audio{
+	display: block;
+	width: 20px;
+	height: 20px;
+	border:1px solid rgba(255,255,255,.7);
+	border-radius: 50%;
+	position: absolute;
+	z-index: 10;
+	right: 6px;
+	top:6px;
+	-webkit-animation: easyh5-circel 2s infinite cubic-bezier(.81,.32,.33,.88);
+	animation: easyh5-circel 2s infinite cubic-bezier(.81,.32,.33,.88);
+	background-repeat: no-repeat;
+	background-size: 10px;
+	background-position: center;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAALVBMVEUAAAD///////////////////////////////////////////////////////+hSKubAAAADnRSTlMA0JCAsH9PQCDfwL9wb0sYVh0AAABNSURBVAjXYwAD9ivzQFSb9rt370AMIIXBeKXWB2I8Oc7AwAdiPGDAwzB8GAdmMIG0M8uJPuADMfTevQOJPAIZC1JjABJRACkEqhEG0wCrIC0cT3hg8QAAAABJRU5ErkJggg==);
+}
+@-webkit-keyframes easyh5-circel{
+	0% {
+		transform:rotate(0deg); 
+	}
+	100% { 
+		transform:rotate(360deg); 
+	}
+}
 @-webkit-keyframes easy-arr{
 	0%, 30% {
 		opacity: 0;
