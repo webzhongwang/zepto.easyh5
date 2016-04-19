@@ -36,9 +36,12 @@ module.exports = function(grunt) {
 	});
 
 	// 注册事件
-	grunt.registerTask('dist',[
+	grunt.registerTask('build',[
 		'clean',
 		'uglify:target',
 		'cssmin:target'
+	]);
+	grunt.registerTask('dist',[
+		'build'
 	]);
 };
