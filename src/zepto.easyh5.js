@@ -132,7 +132,6 @@
                 _this.resetClass();
                 clearInterval(_this.settings.autoTimer);
             });
-
         },
         touchmove: function(){
             // touchmove事件
