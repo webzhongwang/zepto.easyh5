@@ -53,7 +53,7 @@
 	    <section class="easyh5-page s1">
 	    	<h1 class="a" anim-class="bounceInRight animated" delay="0.4">title</h1>
 	    	<div class="b" anim-class="slideInUp animated" delay>content</div>
-	    	<p class="c " anim-class="fadeIn animated" delay="0.8">footer</p>
+	    	<p class="c " anim-class="fadeIn animated" delay="0.8" duration="2.5">footer</p>
 	    </section>
 	    <section class="easyh5-page s2">
 	    	<h1 class="a " anim-class="bounceInRight animated" delay="0.3">2title</h1>
@@ -61,7 +61,7 @@
 	    </section>
 	</div>
 
-delay代表动画延迟的时长，单位（秒），无需延时动画的请加上空的delay属性；anim-class代表动画类名
+delay用于设置动画延迟执行的时长，单位（秒），无需延迟执行动画的元素也一定要加上空的delay属性；duration用于设置动画时长，单位（秒）；anim-class代表动画类名
 
 #### 关于Animate.css
 
