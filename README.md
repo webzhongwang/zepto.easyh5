@@ -48,7 +48,7 @@
     };
 
 #### 动画设置
-
+	```html
 	<div id="easyh5" class="easyh5">
 	    <section class="easyh5-page s1">
 	    	<h1 class="a" anim-class="bounceInRight animated" delay="0.4">title</h1>
@@ -60,7 +60,7 @@
 	    	<p class="c" anim-class="bounceInLeft animated" delay="0.7">2footer</p>
 	    </section>
 	</div>
-
+	```
 delay用于设置动画延迟执行的时长，单位（秒），无需延迟执行动画的元素也一定要加上空的delay属性；duration用于设置动画时长，单位（秒）；anim-class代表动画类名
 
 #### 关于Animate.css
