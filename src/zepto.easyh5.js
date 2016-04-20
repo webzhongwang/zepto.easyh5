@@ -22,9 +22,10 @@
         autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位（秒）
         showPageNum: true,  // 是否显示当前页是第几页，从第一页开始计数
         pageNumPlace: 'right-bottom',   // 显示页码的位置，只有当showPageNum为true时有效，取值:left-top|left-bottom|right-top|right-bottom
-        audio: false,       // 是否添加背景音乐
+        audio: false,       // 是否添加背景音乐，目前暂不支持safari浏览器
         showAudio: true,    // 是否显示背景音乐图标，只有当audio为true时生效
-        audioSrc: 'http://webzhongwang.github.io/zepto.easyh5/files/bg1.mp3',       // 背景音乐地址，只有当audio为true时生效
+        audioSrc: 'http://webzhongwang.github.io/zepto.easyh5/files/bg1.mp3',  // 背景音乐地址，只有当audio为true时生效
+        volume: 0.8,        // 控制背景音乐声音大小，取值[0,1.0]，默认0.8
         width: 320,         // 设置内容区域宽度 默认320px
         height: 480,        // 设置内容区域高度 默认480px
         persent: 0.15       // 滑动屏幕的临界值时触发换页 默认是屏幕高度的15%
@@ -176,6 +177,7 @@
             $(this.$node.find('.easyh5-page')).css({
                 opacity: 1
             });
+            this.$node[0].style['background'] = 'none';
         },
         initAudio: function(){
             // 背景音乐
@@ -184,10 +186,15 @@
                 var i = '<i class="easyh5-audio"></i>';
                 this.$node.append(i);
             }
-            var $audio = $('<audio loop="loop" autoplay="autoplay" src="' + this.options.audioSrc + '"></audio>');
-
-            $audio[0].volume = 0.8;
-            this.$node.append($audio);
+            var audio = document.createElement('audio');
+            audio.src = this.options.audioSrc;
+            audio.loop = 'loop';
+            audio.volume = this.options.volume;
+            audio.load();
+            $(audio).on('canplaythrough',function(){
+                audio.play();
+            })
+            this.$node.append(audio);
         },
         resetPageNum: function(){
             if(!this.options.showPageNum) return false;
@@ -337,10 +344,8 @@
                     });
                 setTimeout(function(){
                     _this.resetPlacement();
-                    // _this.autoPlay();
                 },_this.options.duration);
             } else {  
-
                 //判断target是否越界
                 if (target < 0) target = _this.settings.size - 1;
                 if (target >= _this.settings.size) target = 0;
@@ -389,6 +394,5 @@
             easyh5 = new Easyh5($(this), option);
         }
         return this;
-    };
-    
+    };  
 }(Zepto, window));
