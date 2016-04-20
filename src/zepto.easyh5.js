@@ -22,7 +22,7 @@
         autoDuration: 5,    // 自动滚屏的时间间隔，只有auto值为true时有效，单位（秒）
         showPageNum: true,  // 是否显示当前页是第几页，从第一页开始计数
         pageNumPlace: 'right-bottom',   // 显示页码的位置，只有当showPageNum为true时有效，取值:left-top|left-bottom|right-top|right-bottom
-        audio: false,       // 是否添加背景音乐，目前暂不支持safari浏览器
+        audio: false,       // 是否添加背景音乐，目前暂不支持safari浏览器和极少部份android平台上的游览器
         showAudio: true,    // 是否显示背景音乐图标，只有当audio为true时生效
         audioSrc: 'http://webzhongwang.github.io/zepto.easyh5/files/bg1.mp3',  // 背景音乐地址，只有当audio为true时生效
         volume: 0.8,        // 控制背景音乐声音大小，取值[0,1.0]，默认0.8
@@ -180,8 +180,10 @@
             this.$node[0].style['background'] = 'none';
         },
         initAudio: function(){
+            var _this = this;
             // 背景音乐
             if(!this.options.audio) return false;
+
             if(this.options.showAudio) {
                 var i = '<i class="easyh5-audio"></i>';
                 this.$node.append(i);
@@ -189,12 +191,41 @@
             var audio = document.createElement('audio');
             audio.src = this.options.audioSrc;
             audio.loop = 'loop';
+            audio.id = 'audio';
             audio.volume = this.options.volume;
             audio.load();
             $(audio).on('canplaythrough',function(){
                 audio.play();
             })
             this.$node.append(audio);
+            // 微信中依赖微信sdk
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+                this.loadWeiXinSdk();
+                setTimeout(function(){
+                    _this.wxAutoPlay(audio);
+                },500);  
+            }
+        },
+        loadWeiXinSdk: function(){
+            // 加载微信SDK
+            var script = document.createElement('script');
+            script.src = 'http://res.wx.qq.com/open/js/jweixin-1.0.0.js';
+            this.$node.prepend(script);
+        },
+        wxAutoPlay: function(audio){
+            // 微信中自动播放
+            wx.config({
+                debug: false,
+                appId: '',
+                timestame: 1,
+                nonceStr: '',
+                signature: '',
+                jsApiList: []
+            });
+            wx.ready(function(){
+                audio.play();
+            });
         },
         resetPageNum: function(){
             if(!this.options.showPageNum) return false;
