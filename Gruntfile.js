@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 		// 压缩JS
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> 作者:<%= pkg.author %>；日期:<%= grunt.template.today("yyyy-mm-dd") %>；email:<%= pkg.email %>；*/\n',
+				banner: '/*! <%= pkg.name %> author:<%= pkg.author %>；date:<%= grunt.template.today("yyyy-mm-dd") %>；email:<%= pkg.email %>；*/\n',
 			},
 			target: {
 				files: {
