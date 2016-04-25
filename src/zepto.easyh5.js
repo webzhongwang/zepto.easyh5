@@ -422,7 +422,7 @@
 
     $.fn.easyh5 = function(option) {
         if (!easyh5) {
-            easyh5 = new Easyh5($(this), option);
+            easyh5 = new Easyh5(this, option);
         }
         return this;
     };  
