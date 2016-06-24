@@ -17,6 +17,13 @@
 
 ## 快速上手
 
+#### 安装
+
+###### 项目克隆
+	git clone git@github.com:webzhongwang/zepto.easyh5.git
+###### npm安装
+	npm install zepto.easyh5 --save-dev
+
 #### 全屏滚动
 ###### HTML
 
