@@ -15,14 +15,14 @@
 
 [在线演示](http://webzhongwang.github.io/zepto.easyh5/)
 
-## 快速上手
-
-#### 安装
+## 安装
 
 ###### 项目克隆
 	git clone git@github.com:webzhongwang/zepto.easyh5.git
 ###### npm安装
 	npm install zepto.easyh5 --save-dev
+
+## 快速上手
 
 #### 全屏滚动
 ###### HTML
