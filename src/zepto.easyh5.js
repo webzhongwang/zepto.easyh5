@@ -415,7 +415,7 @@
             $(window).on('orientationchange', function(e){
                 setTimeout(function(){
                     _this.resetView();
-                },30)
+                },100)
             });
         }
     };
